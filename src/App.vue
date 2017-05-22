@@ -10,17 +10,15 @@
       <div class="task-nav">
         <span class="task-tip">{{ total }}条任务未完成</span>
         <ul class="task-tab">
-          <li :class="{active:flag=='all'}" @click="all()">所有任务</li>
-          <li :class="{active:flag=='active'}" @click="active()">未完成</li>
-          <li :class="{active:flag=='completed'}" @click="completed()">已完成</li>
+          <li v-for="(item,index) in nav" :class="{'active':index==current}" @click="toggle(item,index)">{{item}}</li>
         </ul>
       </div>
       <div class="task-list">
-        <ul v-show="!items.length">
+        <ul v-show="items.length==0">
           <li>没有任务计划</li>
         </ul>
         <ul>
-          <li class="row" v-for="(item,index) in items" :class="{active:item.status}">
+          <li class="row" v-for="(item,index) in list" :class="{'active':item.status}">
             <input class="row-radio" type="checkbox" v-model="item.status">
             <span class="row-text">{{ item.title }}</span>
             <span class="row-del" @click="del(item)">×</span>
@@ -36,44 +34,65 @@
     data() {
       return {
         msg: '',
-        flag:'all',
-        items:[{
-          title:'hello 111',
-          status:false
-        },{
-          title:'hello 222',
-          status:true
-        },{
-          title:'hello 333',
-          status:true
+        current: 0,
+        nav: ['所有任务', '未完成', '已完成'],
+        list:[],
+        items: [{
+          title: 'hello 111',
+          status: false
+        }, {
+          title: 'hello 222',
+          status: true
+        }, {
+          title: 'hello 333',
+          status: true
         }]
       }
     },
-    computed:{
+    computed: {
       total(){
         return this.items.filter(item => !item.status).length
       }
     },
-    methods:{
+    mounted(){
+      this.list=this.items;
+    },
+    methods: {
       add(ev){
         this.items.push({
-          title:ev.target.value,
-          status:false
+          title: ev.target.value,
+          status: false
         });
-        this.msg='';
+        this.msg = '';
+        this.list=this.items;
       },
       del(item){
-        var index=this.items.indexOf(item);
-        this.items.splice(index,1);
+        var index = this.items.indexOf(item);
+        this.items.splice(index, 1);
+        this.list=this.items;
       },
-      all(){
-        this.flag='all';
-      },
-      active(){
-        this.flag='active';
-      },
-      completed(){
-        this.flag='completed';
+      toggle(item, index){
+        this.current = index;
+        this.list = [];
+        if (index === 0) {
+          this.items.forEach(item => {
+            this.list.push(item);
+          });
+        }
+        if (index === 1) {
+          this.items.forEach(item => {
+            if (item.status === false) {
+              this.list.push(item);
+            }
+          });
+        }
+        if (index === 2) {
+          this.items.forEach(item => {
+            if (item.status === true) {
+              this.list.push(item);
+            }
+          });
+        }
       }
     }
   }
@@ -119,6 +138,7 @@
     line-height: 30px;
     text-indent: 10px;
   }
+
   /*筛选*/
 
   .task-nav {
@@ -142,8 +162,9 @@
   }
 
   .task-tab .active {
-    border-color: #999;
+    border-color: red;
   }
+
   /*列表*/
 
   .task-list {
@@ -160,8 +181,9 @@
     padding: 5px 40px;
     position: relative;
   }
-  .task-list li:hover{
-    background-color:rgba(0,0,0,.1);
+
+  .task-list li:hover {
+    background-color: rgba(0, 0, 0, .1);
   }
 
   .row-radio,
