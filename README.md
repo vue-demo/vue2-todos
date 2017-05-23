@@ -1,6 +1,10 @@
 # todos
 
-> A Vue.js project
+> 充分演示全局组件使用
+
+## 示例图
+![示例图](img/01.png)
+![示例图](img/02.png)
 
 ## Build Setup
 
