@@ -3,28 +3,26 @@
     <div class="header">
       <div class="header-inner">任务计划列表</div>
     </div>
-    <div class="tasks">
-      <div class="task-add">
-        <input class="task-input" type="text" v-model="msg" @keyup.enter="add" placeholder="添加任务">
-      </div>
-      <div class="task-nav">
-        <span class="task-tip">{{ total }}条任务未完成</span>
-        <ul class="task-tab">
-          <li v-for="(item,index) in nav" :class="{'active':index==current}" @click="toggle(item,index)">{{item}}</li>
-        </ul>
-      </div>
-      <div class="task-list">
-        <ul v-show="items.length==0">
-          <li>没有任务计划</li>
-        </ul>
-        <ul>
-          <li class="row" v-for="(item,index) in list" :class="{'active':item.status}">
-            <input class="row-radio" type="checkbox" v-model="item.status">
-            <span class="row-text">{{ item.title }}</span>
-            <span class="row-del" @click="del(item)">×</span>
-          </li>
-        </ul>
-      </div>
+    <div class="add">
+      <input class="add-msg" type="text" v-model="msg" @keyup.enter="add" placeholder="添加任务">
+    </div>
+    <div class="nav">
+      <span class="nav-title">{{ total }}条任务未完成</span>
+      <ul class="nav-list">
+        <li v-for="(item,index) in nav" :class="{'active':index==current}" @click="toggle(item,index)">{{item}}</li>
+      </ul>
+    </div>
+    <div class="list">
+      <ul v-show="items.length==0">
+        <li class="row">没有任务计划</li>
+      </ul>
+      <ul>
+        <li class="row" v-for="(item,index) in list" :class="{'active':item.status}">
+          <input class="checkbox" type="checkbox" v-model="item.status">
+          <span class="text">{{ item.title }}</span>
+          <span class="delete" @click="del(item)">×</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -36,7 +34,7 @@
         msg: '',
         current: 0,
         nav: ['所有任务', '未完成', '已完成'],
-        list:[],
+        list: [],
         items: [{
           title: 'hello 111',
           status: false
@@ -55,7 +53,7 @@
       }
     },
     mounted(){
-      this.list=this.items;
+      this.list = this.items;
     },
     methods: {
       add(ev){
@@ -64,12 +62,12 @@
           status: false
         });
         this.msg = '';
-        this.list=this.items;
+        this.list = this.items;
       },
       del(item){
         var index = this.items.indexOf(item);
         this.items.splice(index, 1);
-        this.list=this.items;
+        this.list = this.items;
       },
       toggle(item, index){
         this.current = index;
@@ -114,80 +112,75 @@
     list-style: none;
   }
 
-  .header {
-    line-height: 40px;
-    background-color: #42b983;
-    color: #fff;
-  }
-
-  .header-inner,
-  .tasks {
+  .header,
+  .add,
+  .nav,
+  .list{
     width: 800px;
     margin: 0 auto;
   }
 
-  /*添加*/
+  .header {
+    line-height: 40px;
+    text-indent: 2em;
+    background-color: #42b983;
+    color: #fff;
+  }
 
-  .task-add {
+  .add {
     padding: 10px 0;
   }
 
-  .task-input {
+  .add-msg {
     display: block;
     width: 100%;
     line-height: 30px;
     text-indent: 10px;
   }
 
-  /*筛选*/
-
-  .task-nav {
+  .nav {
     overflow: hidden;
   }
-
-  .task-tip {
+  .nav-title{
     float: left;
-    padding: 5px 10px;
+    line-height: 30px;
   }
-
-  .task-tab {
+  .nav-list{
     float: right;
   }
-
-  .task-tab li {
-    padding: 5px 10px;
+  .nav-list li{
     display: inline-block;
+    font-size: 12px;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-left:10px;
     border: 1px solid #ccc;
-    cursor: pointer;
+  }
+  .nav-list .active{
+    border: 1px solid red;
   }
 
-  .task-tab .active {
-    border-color: red;
-  }
-
-  /*列表*/
-
-  .task-list {
+  .list {
     background-color: white;
     margin-top: 10px;
   }
 
-  .task-list ul {
+  .list ul {
     overflow: hidden;
   }
 
-  .task-list li {
+  .list li {
     border-bottom: 1px solid #ccc;
     padding: 5px 40px;
     position: relative;
   }
 
-  .task-list li:hover {
+  .list li:hover {
     background-color: rgba(0, 0, 0, .1);
   }
 
-  .row-radio,
-  .row-del {
+  .list .checkbox,
+  .list .delete {
     width: 20px;
     height: 20px;
     line-height: 20px;
@@ -197,7 +190,7 @@
     cursor: pointer;
   }
 
-  .task-list .row-radio {
+  .list .checkbox {
     left: 10px;
     top: 10px;
     border-radius: 50%;
@@ -205,14 +198,14 @@
     color: white;
   }
 
-  .task-list .row-del {
+  .list .delete {
     right: 10px;
     top: 10px;
     color: red;
     display: none;
   }
 
-  .task-list .row-text {
+  .list .text {
     display: inline-block;
     width: 100%;
     line-height: 30px;
@@ -220,12 +213,12 @@
     color: #666;
   }
 
-  .task-list .active .row-text {
+  .list .active .text {
     text-decoration: line-through;
     color: #ccc;
   }
 
-  .task-list li:hover .row-del {
+  .list li:hover .delete {
     display: block;
   }
 </style>
