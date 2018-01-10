@@ -1,10 +1,10 @@
-# todos
+## Vue2.5、Vuex3.0 功能演示
 
-## 示例图
-![示例图](img/01.png)
-![示例图](img/02.png)
+### demo截图
+![示例图](static/01.png)
+![示例图](static/02.png)
 
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -16,5 +16,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
