@@ -2,11 +2,16 @@
   <div class="list" ref="list">
 
     <div class="list-scroll">
-      <div class="item" v-for="item in pages">
-        <div class="text">{{ item }}</div>
+      <div class="item" v-for="page in pages" >
+        <div class="text">{{ page }}</div>
       </div>
+
       <div class="more">
         <button type="button" @click="more">More</button>
+      </div>
+
+      <div v-for="item in news" style="display: none">
+        <p class="text">{{ item }}</p>
       </div>
     </div>
 
@@ -18,6 +23,9 @@
   export default {
     name: 'list',
     computed: {
+      news(){
+        return this.$store.state.List.news;
+      },
       page: {
         set(newValue){
           this.$store.state.List.page = newValue;
@@ -37,7 +45,7 @@
       }
     },
     created(){
-      this.$store.dispatch('getHomeNews', this.pages);
+      this.$store.dispatch('getHomeNews');
     },
     mounted(){
       this.$nextTick(() => {
