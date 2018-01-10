@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7076e6e4-e385-461b-be05-89dd51f7aae7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -341,7 +340,7 @@
       <workItem from="1515565546728" duration="1836000" />
       <workItem from="1515567491767" duration="555000" />
       <workItem from="1515568195403" duration="12531000" />
-      <workItem from="1515583800815" duration="35000" />
+      <workItem from="1515583800815" duration="57000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1515568335890</created>
@@ -385,11 +384,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515583704189</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update">
+      <created>1515583838537</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1515583838537</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41980000" />
+    <option name="totallyTimeSpent" value="42002000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -453,6 +459,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -605,6 +614,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -620,6 +632,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="285">
             <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
