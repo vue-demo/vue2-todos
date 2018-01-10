@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap home">
-    <div class="header">任务计划列表</div>
+  <div class="home">
+    <div class="title">任务计划列表</div>
 
     <input
       class="create"
@@ -18,6 +18,7 @@
           @click="toggle(item,index)"
         >
           {{item}}
+
         </li>
       </ul>
     </div>
@@ -108,19 +109,13 @@
   }
 </script>
 <style scoped>
-  .header,
-  .create{
+  .title,
+  .create {
     width: 100%;
     margin: 0 auto;
   }
 
-  .nav,
-  .list{
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .header {
+  .title {
     line-height: 40px;
     text-indent: 2em;
     background-color: #42b983;
@@ -135,25 +130,35 @@
     text-indent: 10px;
   }
 
+  .nav,
+  .list {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .nav {
     overflow: hidden;
   }
-  .nav-title{
+
+  .nav-title {
     float: left;
     line-height: 30px;
   }
-  .nav-list{
+
+  .nav-list {
     float: right;
   }
-  .nav-list li{
+
+  .nav-list li {
     display: inline-block;
     font-size: 12px;
     line-height: 28px;
     padding: 0 10px;
-    margin-left:10px;
+    margin-left: 10px;
     border: 1px solid #ccc;
   }
-  .nav-list .active{
+
+  .nav-list .active {
     border: 1px solid red;
   }
 

@@ -1,16 +1,20 @@
 <template>
-  <div class="wrap photo">
-    <div class="nav">
-      <select @change="toggle(items,index,$event)" v-for="(item,index) in menu" :key="index">
-        <option v-for="(option,index) in item.option" :key="index">{{ option }}</option>
-      </select>
-    </div>
-    <div class="items">
-      <div class="item" v-for="item in items">
-        <div class="pic" :style="'background-image:url('+item.pic+')'"></div>
-        <div class="text">{{ item.title }}</div>
+  <div class="photo" ref="photo">
+
+    <div class="photo-scroll">
+      <div class="nav">
+        <select class="nav-select" v-for="(item,index) in menu" @change="toggle(items,index,$event)" :key="index">
+          <option v-for="(option,index) in item.option" :key="index">{{ option }}</option>
+        </select>
+      </div>
+      <div class="items">
+        <div class="item" v-for="item in items">
+          <div class="pic" :style="'background-image:url('+item.pic+')'"></div>
+          <div class="text">{{ item.title }}</div>
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -46,6 +50,10 @@
     },
     mounted(){
       this.items = this.list;
+
+      this.$nextTick(() => {
+        this.BScroll(this.$refs.photo, {})
+      })
     },
     methods: {
       toggle(list, index, ev){
@@ -92,11 +100,15 @@
     padding: 0 10px;
   }
 
-  .nav {
+  .photo-scroll {
+
+  }
+
+  .photo .nav {
     padding: 10px 0;
   }
 
-  .nav select {
+  .photo .nav-select {
     padding: 5px;
     height: 30px;
   }

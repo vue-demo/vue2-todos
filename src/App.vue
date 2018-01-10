@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <router-link to="/">Home</router-link>
-    <router-link to="/list">List</router-link>
-    <router-link to="/photo">photo</router-link>
-
-    <router-view/>
+    <div class="header">
+      <router-link to="/">Home</router-link>
+      <router-link to="/list">List</router-link>
+      <router-link to="/photo">photo</router-link>
+    </div>
+    <router-view class="app-view"/>
   </div>
 </template>
 
@@ -35,8 +36,35 @@
   }
 
   body {
-    width: 414px;
+    max-width: 414px;
     margin: 0 auto;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 5px 0 20px -5px rgba(0, 0, 0, 0.5), -5px 0 20px -5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 0 20px -5px rgba(0, 0, 0, 0.5), -5px 0 20px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0 20px -5px rgba(0, 0, 0, 0.5), -5px 0 20px -5px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  #app {
+    height: 100%;;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-view {
+    background-color: #fff;
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .header{
+    line-height: 30px;
+    position: relative;
+    z-index: 101;
+  }
+  .header a{
+    display: inline-block;
   }
 </style>

@@ -1,11 +1,15 @@
 <template>
-  <div class="wrap list">
-    <div class="item" v-for="item in pages">
-      <div class="text">{{ item }}</div>
+  <div class="list" ref="list">
+
+    <div class="list-scroll">
+      <div class="item" v-for="item in pages">
+        <div class="text">{{ item }}</div>
+      </div>
+      <div class="more">
+        <button type="button" @click="more">More</button>
+      </div>
     </div>
-    <div class="more">
-      <button type="button" @click="more">More</button>
-    </div>
+
   </div>
 </template>
 
@@ -36,7 +40,9 @@
       this.$store.dispatch('getHomeNews', this.pages);
     },
     mounted(){
-
+      this.$nextTick(() => {
+        this.BScroll(this.$refs.list, {})
+      })
     },
     methods: {
       more(){
@@ -48,11 +54,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .wrap {
+  .list {
     width: 100%;
   }
 
-  .wrap .item {
+  .list-scroll{
+
+  }
+
+  .list .item {
     width: 100%;
     margin: 5px auto;
     line-height: 100px;
@@ -60,7 +70,8 @@
     border: 1px solid #ccc;
   }
 
-  .wrap .more {
+  .list .more {
+    padding: 10px;
     text-align: center;
   }
 </style>
