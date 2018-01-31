@@ -67,4 +67,7 @@
   .header a{
     display: inline-block;
   }
+  .router-link-active{
+    color: red;
+  }
 </style>
